@@ -17,13 +17,10 @@ async function getWeather() {
     
     try {
         const response = await fetch(url, options);
-        const result = await response.json(); // Parse the result as JSON
+        const result = await response.json();
         console.log(result);
-
-        // Display specific weather information within a card
         temperatureElement.textContent = `${result.temp} °C`;
         weatherDescriptionElement.textContent = result.weather_description;
-
         document.getElementById('cloud-pct').textContent = result.cloud_pct;
         document.getElementById('humidity').textContent = result.humidity;
         document.getElementById('min-temp').textContent = result.min_temp;
@@ -32,11 +29,9 @@ async function getWeather() {
         document.getElementById('wind-degrees').textContent = result.wind_degrees;
         document.getElementById('sunrise').textContent = result.sunrise;
         document.getElementById('sunset').textContent = result.sunset;
-
-        // Show the card after weather information is fetched
         card.style.display = 'block';
     } catch (error) {
         console.error(error);
-        card.style.display = 'none'; // Hide the card in case of an error
+        card.style.display = 'none';
     }
 }
